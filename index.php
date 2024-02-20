@@ -66,22 +66,22 @@ $router->map("GET|POST" , "/admin/vehicle/new", [
     "method" => "open_vehicle_page"
 ] , "open_vehicle_page");
 
-$router->map("GET|POST" , "/admin/vehicle/[i:id]", [
+$router->map("GET|POST" , "/admin/vehicle/delete", [
     "class" => "\App\Controller\AdminController",
     "method" => "delete_vehicle"
 ] , "delete_vehicle");
 
-$router->map("GET|POST" , "/admin/user/[i:id]", [
+$router->map("GET|POST" , "/admin/user/delete", [
     "class" => "\App\Controller\AdminController",
     "method" => "delete_user"
 ] , "delete_user");
 
-$router->map("GET|POST" , "/admin/vehicle/[i:id]", [
+$router->map("GET|POST" , "/admin/vehicle/modify", [
     "class" => "\App\Controller\AdminController",
     "method" => "update_vehicle"
 ] , "update_vehicle");
 
-$router->map("GET|POST" , "/admin/user/[i:id]", [
+$router->map("GET|POST" , "/admin/user/modify", [
     "class" => "\App\Controller\AdminController",
     "method" => "update_user"
 ] , "update_user");

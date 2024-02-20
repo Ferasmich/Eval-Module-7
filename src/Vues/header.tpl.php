@@ -37,8 +37,6 @@
                         Admin
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="adminDropdown">
-                        <li><a class="dropdown-item" href="<?= $router->generate("admin_vehicle_new") ?>">New Vehicle</a></li>
-                        <li><a class="dropdown-item" href="<?= $router->generate("admin_user_new") ?>">New User</a></li>
                         <li><a class="dropdown-item" href="<?= $router->generate("admin_manage_vehicle") ?>"> Manage Vehicle </a></li>
                         <li><a class="dropdown-item" href="<?= $router->generate("admin_manage_user") ?>"> Manage User </a></li>
                     </ul>

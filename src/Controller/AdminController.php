@@ -141,24 +141,47 @@ class AdminController  extends AbstractController{
         $this->render("manage_user" , $data);
     }
 
-    public function delete_user() :void {
-        if (isset($_POST['user_id'])) {
-            $deleteVehicle = new User();
-            $id = $_GET['Delete'];
+    public function delete_vehicle() :void {
+        if (isset($_POST['vehicle_id'])) { 
+            $deleteVehicle = new Vehicle(); 
+            $id = $_POST['vehicle_id']; 
             $deleteVehicle->delete($id);
             global $router ;
             header("Location:" . $router->generate("home"));
         }
     }
-    public function delete_vehicle() :void {
-        $deleteVehicle = new Vehicle();
-        $id = $_GET['Delete'];
-        $deleteVehicle->delete($id);
-        global $router ;
-        header("Location:" . $router->generate("home"));
+    public function delete_user() :void {
+        if (isset($_POST['user_id'])) { 
+            $deleteUser = new User(); 
+            $id = $_POST['user_id']; 
+            $deleteUser->delete($id);
+            global $router ;
+            header("Location:" . $router->generate("home"));
+        }
     }
 
+    public function update_vehicle() :void {
+        $data = [];
+        $userModel =  new User();
+        $data["user"] = $userModel->readAll();
+        $data["h1"] = " Modify Vehicle Data ";
+        $data["title"] = "vehicle Data";
+        $this->render("update_user" , $data);
 
+        global $router ;
+        header("Location:" . $router->generate("manage_vehicle"));
+    }
+    public function update_user() :void {
+        $data = [];
+        $userModel =  new User();
+        $data["user"] = $userModel->readAll();
+        $data["h1"] = " Modify user Data ";
+        $data["title"] = "User Data";
+        $this->render("update_user" , $data);
+
+        global $router ;
+        header("Location:" . $router->generate("manage_user"));
+    }
 }
 
 

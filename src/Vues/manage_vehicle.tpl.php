@@ -20,21 +20,27 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($data["vehicle"] as $key => $value): ?>
-                    <tr>
-                        <td><?= $value->getId() ?></td>
-                        <td><?= $value->getName() ?></td>
-                        <td><?= $value->getModel() ?></td>
-                        <td><?= $value->getOn_sale() ?></td>
-                        <td>
-                        <form method="post">
-                        <input type="submit" name="Delete" class="btn btn-danger" value="Delete">                        </td>
-                        <td>
-                        <input type="submit" name="Modify" class="btn btn-danger" value="Modify">
-                        </td>
+            <?php foreach ($data["vehicle"] as $key => $value): ?>
+                <tr>
+                    <td><?= $value->getId() ?></td>
+                    <td><?= $value->getName() ?></td>
+                    <td><?= $value->getModel() ?></td>
+                    <td><?= $value->getOn_sale() ?></td>
+                    <td>
+                        <form method="post" action="delete">
+                            <input type="hidden" name="vehicle_id" value="<?= $value->getId() ?>">
+                            <input type="submit" name="Delete" class="btn btn-danger" value="Delete">
                         </form>
-                    </tr>
-                <?php endforeach; ?>
+                    </td>
+                    <td>
+                        <form method="post" action="modify">
+                            <input type="hidden" name="vehicle_id" value="<?= $value->getId() ?>">
+                            <input type="submit" name="Modify" class="btn btn-danger" value="Modify">
+                        </form>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            
             </tbody>
         </table>
     </div>
