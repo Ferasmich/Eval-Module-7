@@ -19,7 +19,7 @@
             <input type="password" id="password" class="form-control" name="password">
         </div>
         <div class="text-end">
-            <input type="submit" class="btn btn-success" value="créer un nouveau profil">
+            <input type="submit" class="btn btn-success" value="Create">
         </div>
     </form>
     </div>

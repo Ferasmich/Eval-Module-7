@@ -178,8 +178,8 @@ class Vehicle{
     public function update($id){
         $connexion = Bdd::getInstance();
         $sql = "UPDATE Vehicle 
-                SET name = :name , model = :model , description = :description ,  on_sale = :on_sale;
-                WHERE id = :id";
+                SET name = :name , model = :model , description = :description , dt_creation = :dt_creation, on_sale = :on_sale;
+                WHERE id = $id";
         $stmt = $connexion->prepare($sql);
         $stmt->execute([
             ":id" => $id ,

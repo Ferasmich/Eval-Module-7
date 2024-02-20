@@ -124,7 +124,6 @@ class User{
         $sql = "SELECT * FROM User WHERE id = :id";
         $stmt = $connexion->prepare($sql);
         $stmt->execute([":id" => $id]);
-        var_dump($stmt);
         return $stmt->fetchObject(User::class);
     }
 

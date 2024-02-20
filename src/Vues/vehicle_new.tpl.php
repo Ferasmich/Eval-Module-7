@@ -39,7 +39,7 @@
         </div>
 
         <div class="text-end">
-            <input type="submit" class="btn btn-primary" value="créer nouvel vehicle">
+            <input type="submit" class="btn btn-primary" value="Create">
         </div>
     </form>
 </div>

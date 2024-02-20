@@ -9,7 +9,7 @@
     <?php endif ?>
 
     <div class="row">
-    <form method="post" class="col-6 offset-3 my-4">
+    <form method="post" class="col-6 offset-3 my-4" action="update">
         <div class="mb-3">
             <label for="email">email *</label>
             <input type="email" id="email" class="form-control" name="email">
@@ -18,8 +18,12 @@
             <label for="password">password *</label>
             <input type="password" id="password" class="form-control" name="password">
         </div>
+        <div class="mb-3">
+            <label for="pseudo">pseudo *</label>
+            <input type="pseudo" id="pseudo" class="form-control" name="pseudo">
+        </div>
         <div class="text-end">
-            <input type="submit" class="btn btn-success" value="créer un nouveau profil">
+            <input type="submit" class="btn btn-success" value="Update">
         </div>
     </form>
     </div>
