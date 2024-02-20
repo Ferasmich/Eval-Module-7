@@ -161,14 +161,14 @@ class AdminController  extends AbstractController{
 
     //Receive the Vehicle_ID for further modification from manage_vehicle
     public function modify_vehicle() :void {
-        $result = [];
+        $data = [];
         $VehicleModel =  new User();
         $id = $_POST['vehicle_id'];
-        $result["vehicle"] = $VehicleModel->readOne($id);
-        $result["h1"] = " Modify user Data ";
-        $result["title"] = "User Data";
-        $this->update_vehicle($id);
-        $this->render("update_user" , $result);
+        $data["vehicle"] = $VehicleModel->readOne($id);
+        $data["h1"] = " Modify Vehicle Data ";
+        $data["title"] = "User Data";
+        $data["vehicle_id"] = $id;
+        $this->render("update_vehicle" , $data);
 
         global $router ;
         header("Location:" . $router->generate("manage_vehicle"));
@@ -176,26 +176,28 @@ class AdminController  extends AbstractController{
 
     //Receive the User_ID for further modification from manage_user
     public function modify_user() :void {
-        $result = [];
+        $data = [];
         $userModel =  new User();
         $id = $_POST['user_id'];
-        $result["user"] = $userModel->readOne($id);
-        $result["h1"] = " Modify user Data ";
-        $result["title"] = "User Data";
-        $this->update_user($id);
-        $this->render("update_user" , $result);
+        $data["user"] = $userModel->readOne($id);
+        $data["h1"] = " Modify user Data ";
+        $data["title"] = "User Data";
+        $data["user_id"] = $id;
+        $this->render("update_user" , $data);
 
         global $router ;
         header("Location:" . $router->generate("manage_user"));
     }
 
     //Modify Vehicle according to the ID
-    public function update_vehicle($id){
+    public function update_vehicle(){
 
         $erreur = []; 
         $vehicleModel = new Vehicle();
         if(!empty($_POST)){
-            // fonction sanitize => enlever les caractères injections 
+            
+            $id = $_POST['vehicle_id'];
+
             $name = htmlspecialchars(trim($_POST["name"]));
             $model = htmlspecialchars(trim($_POST["model"]));
             $description = htmlspecialchars(trim($_POST["description"]));
@@ -254,9 +256,12 @@ class AdminController  extends AbstractController{
         $this->render("update_user", $data); 
     }
 
-    public function update_user($id){
+    public function update_user(){
         $erreur = [];
         if(!empty($_POST)){
+
+            $id = $_POST['user_id'];
+
             $email = htmlspecialchars(trim($_POST["email"]));
             $password = htmlspecialchars(trim($_POST["password"]));
 

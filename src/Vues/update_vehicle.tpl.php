@@ -9,37 +9,42 @@
             <?php endforeach ?>
         </div>
     <?php endif ?>
-    <form method="post">
-        <div class="mb-4">
-            <label for="name"> Name *</label>
-            <input type="text" name="name" class="form-control" id="name" value="<?= $data["vehicle"]->getName() ?>">
+    <form method="post" action="update">
+    <div class="mb-3">
+            <label for="vehicle_id">ID </label>
+            <input type="vehicle_id" id="vehicle_id" class="form-control" name="vehicle_id" value="<?php echo $data["vehicle_id"]; ?>" readonly>
         </div>
         <div class="mb-4">
-            <label for="model"> Model *</label>
-            <input type="text" name="model" class="form-control" id="model" value="<?= $data["vehicle"]->getModel() ?>">
+            <label for="name"> Name </label>
+            <input type="text" name="name" class="form-control" id="name" >
         </div>
         <div class="mb-4">
-            <label for="description"> Description *</label>
-            <textarea name="description" id="description" cols="30" rows="10" class="form-control"><?= $data["vehicle"]->getDescription() ?></textarea>
+            <label for="model"> Model </label>
+            <input type="text" name="model" class="form-control" id="model" >
+        </div>
+        <div class="mb-4">
+            <label for="description"> Description </label>
+            <textarea name="description" id="description" cols="30" rows="10" class="form-control">
+            </textarea>
         </div>
 
         <div class="mb-4">
             <label for="image"> Image Link </label>
-            <input type="text" name="image" class="form-control" id="image" value="<?= $data["vehicle"]->getImage() ?>">
+            <input type="text" name="image" class="form-control" id="image" >
         </div>
 
         <div class="mb-4">
             <label for="dt_creation"> Date </label>
-            <input type="text" name="dt_creation" class="form-control" id="dt_creation" value="<?= $data["vehicle"]->getDtCreation() ?>">
+            <input type="text" name="dt_creation" class="form-control" id="dt_creation" >
         </div>
 
         <div class="mb-4">
             <label for="on_sale"> Available </label>
-            <input type="text" name="on_sale" class="form-control" id="on_sale" value="<?= $data["vehicle"]->getOn_sale() ?>">
+            <input type="text" name="on_sale" class="form-control" id="on_sale" >
         </div>
 
         <div class="text-end">
-            <input type="submit" class="btn btn-primary" value="créer nouvel vehicle">
+            <input type="submit" class="btn btn-primary" value="update">
         </div>
     </form>
 </div>

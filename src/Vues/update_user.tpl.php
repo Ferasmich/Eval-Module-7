@@ -8,18 +8,24 @@
         </div>
     <?php endif ?>
 
+    <?php var_dump($data["user_id"]); ?>
+
     <div class="row">
     <form method="post" class="col-6 offset-3 my-4" action="update">
         <div class="mb-3">
-            <label for="email">email *</label>
+            <label for="user_id">ID </label>
+            <input type="user_id" id="user_id" class="form-control" name="user_id" value="<?php echo $data["user_id"]; ?>" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="email">email </label>
             <input type="email" id="email" class="form-control" name="email">
         </div>
         <div class="mb-3">
-            <label for="password">password *</label>
+            <label for="password">password </label>
             <input type="password" id="password" class="form-control" name="password">
         </div>
         <div class="mb-3">
-            <label for="pseudo">pseudo *</label>
+            <label for="pseudo">pseudo </label>
             <input type="pseudo" id="pseudo" class="form-control" name="pseudo">
         </div>
         <div class="text-end">
