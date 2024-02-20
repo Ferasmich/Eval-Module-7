@@ -243,8 +243,11 @@ class AdminController  extends AbstractController{
                          ->setImage($image === "" ? null : $image  )
                          ->setOn_sale($on_sale)
                          ->setDtCreation($dt_creation);
+
+
             if(empty($erreur)){
                 $vehicleModel->update($id);
+                //var_dump($vehicleModel);
                 global $router ;
                 
                 header("Location:". $router->generate("home"));
@@ -278,16 +281,17 @@ class AdminController  extends AbstractController{
             }
              // est ce que il n'y a pas déjà un projet user avec le mail saisi 
             $userModel = new User(); 
-            if($userModel->isUnique($email) !== 0){
-                $erreur[] = "le mail saisit est déjà utilisé, veuillez choisir une autre email"; 
-            }
+            // if($userModel->isUnique($email) !== 0){
+            //     $erreur[] = "le mail saisit est déjà utilisé, veuillez choisir une autre email"; 
+            // }
             
             $passwordHashed = password_hash($password ,  PASSWORD_BCRYPT );
 
             $userModel->setEmail($email)
                 ->setPassword($passwordHashed)
                 ->setPseudo("redacteur");
-            // si il n'y a pas d'erreur 
+
+             
             if(empty($erreur)){
                 // create 
                 $userModel->update($id);

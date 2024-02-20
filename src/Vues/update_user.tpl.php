@@ -24,10 +24,6 @@
             <label for="password">password </label>
             <input type="password" id="password" class="form-control" name="password">
         </div>
-        <div class="mb-3">
-            <label for="pseudo">pseudo </label>
-            <input type="pseudo" id="pseudo" class="form-control" name="pseudo">
-        </div>
         <div class="text-end">
             <input type="submit" class="btn btn-success" value="Update">
         </div>

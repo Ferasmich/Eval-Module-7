@@ -178,15 +178,19 @@ class Vehicle{
     public function update($id){
         $connexion = Bdd::getInstance();
         $sql = "UPDATE Vehicle 
-                SET name = :name , model = :model , description = :description , dt_creation = :dt_creation, on_sale = :on_sale;
+                SET name = :name , model = :model , description = :description , image = :image, date_creation = :dt_creation, on_sale = :on_sale
                 WHERE id = $id";
+
         $stmt = $connexion->prepare($sql);
         $stmt->execute([
             ":id" => $id ,
             ":name" => $this->name ,
             ":model" => $this->model ,
-            ":description"    => $this->description,
+            ":description" => $this->description ,
+            ":image" => $this->image,
+            ":dt_creation" => $this->dt_creation,
             ":on_sale" => $this->on_sale
+            
         ]);
         return $stmt->rowCount(); 
     }

@@ -147,6 +147,7 @@ class User{
         $sql = "UPDATE User 
                 SET email = :email , password = :password , pseudo = :pseudo 
                 WHERE id = :id";
+        var_dump($sql);
         $stmt = $connexion->prepare($sql);
         $stmt->execute([
             ":id" => $id ,
