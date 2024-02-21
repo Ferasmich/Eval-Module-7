@@ -64,7 +64,9 @@ class SiteController extends AbstractController{
                 $erreurs[] = "email saisit n'existe pas !!";
             }
 
-            if($userRecherche && !password_verify( $password ,password_hash($userRecherche->getPassword(),PASSWORD_DEFAULT) )){
+            //if($userRecherche && !password_verify( $password ,password_hash($userRecherche->getPassword(),PASSWORD_DEFAULT) ))
+            if($userRecherche && !password_verify( $password , $userRecherche->getPassword() ))
+            {
                 $erreurs[] = "password n'est pas valide !!";
                 // en général on met le même message pour le login et password 
                 // identifiants invalides 

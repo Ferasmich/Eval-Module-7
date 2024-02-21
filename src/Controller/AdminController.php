@@ -117,7 +117,7 @@ class AdminController  extends AbstractController{
             }
         }
         $data = [];
-        $data["h1"] = "créer un nouveau profil gestionnaire"; 
+        $data["h1"] = "Create new user profile"; 
         $data["erreur"] = $erreur ; 
         $this->render("user_new" , $data); 
     }
