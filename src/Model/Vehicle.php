@@ -11,7 +11,7 @@ class Vehicle{
     private string $model = "";
     private string|null $description = null;
     private string|null $image = null;
-    private string|null  $dt_creation = null; 
+    private string|null  $date_creation = null; 
     private bool|null $on_sale = null;
 
     /**
@@ -114,7 +114,7 @@ class Vehicle{
      */ 
     public function getDtCreation()
     {
-        return $this->dt_creation;
+        return $this->date_creation;
     }
 
     /**
@@ -122,9 +122,9 @@ class Vehicle{
      *
      * @return  self
      */ 
-    public function setDtCreation($dt_creation)
+    public function setDtCreation($date_creation)
     {
-        $this->dt_creation = $dt_creation;
+        $this->date_creation = $date_creation;
 
         return $this;
     }
@@ -157,12 +157,22 @@ class Vehicle{
         return $stmt->fetchAll(PDO::FETCH_CLASS, Vehicle::class);
     }
 
+    public function readOne($id){
+        $connexion = Bdd::getInstance();
+        $sql = "SELECT * FROM Vehicle WHERE id = $id";
+        //$stmt = $connexion->prepare($sql);
+        //$stmt->execute([":id" => $id]);
+        //return $stmt->fetchObject(User::class);
+        $stmt = $connexion->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_CLASS, Vehicle::class);
+    }
+
     public function create(){
         $connexion = Bdd::getInstance();
         $sql = "INSERT INTO Vehicle
                 (name, model , description , image , date_creation , on_sale)
                 VALUES
-                (:name , :model , :description , :image, :dt_creation, :on_sale)
+                (:name , :model , :description , :image, :date_creation, :on_sale)
             ";
         $stmt = $connexion->prepare($sql );
         $stmt->execute([
@@ -170,7 +180,7 @@ class Vehicle{
             ":model" => $this->model ,
             ":description" => $this->description ,
             ":image" => $this->image,
-            ":dt_creation" => $this->dt_creation,
+            ":date_creation" => $this->date_creation,
             ":on_sale" => $this->on_sale
         ]);
         return $stmt->rowCount(); 
@@ -178,22 +188,24 @@ class Vehicle{
     public function update($id){
         $connexion = Bdd::getInstance();
         $sql = "UPDATE Vehicle 
-                SET name = :name , model = :model , description = :description , image = :image, date_creation = :dt_creation, on_sale = :on_sale
-                WHERE id = $id";
-
+                SET name = :name , model = :model , description = :description , image = :image, date_creation = :date_creation, on_sale = :on_sale
+                WHERE id = :id";
         $stmt = $connexion->prepare($sql);
+
         $stmt->execute([
             ":id" => $id ,
             ":name" => $this->name ,
             ":model" => $this->model ,
             ":description" => $this->description ,
             ":image" => $this->image,
-            ":dt_creation" => $this->dt_creation,
+            ":date_creation" => $this->date_creation,
             ":on_sale" => $this->on_sale
             
         ]);
+        
         return $stmt->rowCount(); 
-    }
+
+}
 
     // Destroy the data from Vehicle Table  
     public function delete($id){

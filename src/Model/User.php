@@ -121,10 +121,12 @@ class User{
 
     public function readOne($id){
         $connexion = Bdd::getInstance();
-        $sql = "SELECT * FROM User WHERE id = :id";
-        $stmt = $connexion->prepare($sql);
-        $stmt->execute([":id" => $id]);
-        return $stmt->fetchObject(User::class);
+        $sql = "SELECT * FROM User WHERE id = $id";
+        //$stmt = $connexion->prepare($sql);
+        //$stmt->execute([":id" => $id]);
+        //return $stmt->fetchObject(User::class);
+        $stmt = $connexion->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_CLASS, User::class);
     }
 
     public function readOneByEmail(string $email){
@@ -147,7 +149,7 @@ class User{
         $sql = "UPDATE User 
                 SET email = :email , password = :password , pseudo = :pseudo 
                 WHERE id = :id";
-        var_dump($sql);
+                
         $stmt = $connexion->prepare($sql);
         $stmt->execute([
             ":id" => $id ,

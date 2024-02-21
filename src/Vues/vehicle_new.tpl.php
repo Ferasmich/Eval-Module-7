@@ -29,8 +29,8 @@
         </div>
 
         <div class="mb-4">
-            <label for="dt_creation"> Date </label>
-            <input type="text" name="dt_creation" class="form-control" id="dt_creation" value="<?= $data["vehicle"]->getDtCreation() ?>">
+            <label for="date_creation"> Date </label>
+            <input type="text" name="date_creation" class="form-control" id="date_creation" value="<?= $data["vehicle"]->getDtCreation() ?>">
         </div>
 
         <div class="mb-4">

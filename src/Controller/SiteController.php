@@ -14,6 +14,36 @@ class SiteController extends AbstractController{
         $this->render("home" , $data);
     }
 
+    //Receive the Vehicle_ID for further modification from manage_vehicle
+    public function modify_vehicle() :void {
+        $data = [];
+        $VehicleModel =  new Vehicle();
+        $id = $_POST['vehicle_id'];
+        $data["vehicle"] = $VehicleModel->readOne($id);
+        $data["h1"] = " Modify Vehicle Data ";
+        $data["title"] = "User Data";
+        $data["vehicle_id"] = $id;
+        $this->render("update_vehicle" , $data);
+
+        global $router ;
+        header("Location:" . $router->generate("manage_vehicle"));
+    }
+
+    //Receive the User_ID for further modification from manage_user
+    public function modify_user() :void {
+        $data = [];
+        $userModel =  new User();
+        $id = $_POST['user_id'];
+        $data["user"] = $userModel->readOne($id);
+        $data["h1"] = " Modify user Data ";
+        $data["title"] = "User Data";
+        $data["user_id"] = $id;
+        $this->render("update_user" , $data);
+
+        global $router ;
+        header("Location:" . $router->generate("manage_user"));
+    }
+
     public function login() :void{
         $erreurs = [];
         if(!empty($_POST)){
@@ -45,7 +75,7 @@ class SiteController extends AbstractController{
                 $_SESSION["user"] = $userRecherche ; 
                 
                 global $router ;
-                header("Location: " . $router->generate("admin_vehicle_new"));
+                header("Location: " . $router->generate("home"));
             }
         }
         $data = [];

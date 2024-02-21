@@ -31,6 +31,11 @@ $router->map("GET", "/vehicle/[i:id]", [
     "method" => "vehicle"
 ] , "vehicle");
 
+$router->map("GET", "/user/[i:id]", [
+    "class" => "\App\Controller\SiteController",
+    "method" => "user"
+] , "user");
+
 $router->map("GET|POST", "/admin/vehicle/new", [
     "class" => "\App\Controller\AdminController",
     "method" => "vehicle_new"
@@ -71,13 +76,15 @@ $router->map("GET|POST" , "/admin/user/delete", [
     "method" => "delete_user"
 ] , "delete_user");
 
+// Vehicle Modify ( POST id ) => ( One user Data ) Update User tap - Admin
 $router->map("GET|POST" , "/admin/vehicle/modify", [
-    "class" => "\App\Controller\AdminController",
+    "class" => "\App\Controller\SiteController",
     "method" => "modify_vehicle"
 ] , "modify_vehicle");
 
+// User Modify ( POST id ) => ( One user Data ) Update User tap - Admin
 $router->map("GET|POST" , "/admin/user/modify", [
-    "class" => "\App\Controller\AdminController",
+    "class" => "\App\Controller\SiteController",
     "method" => "modify_user"
 ] , "modify_user");
 

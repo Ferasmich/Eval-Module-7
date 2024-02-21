@@ -17,8 +17,8 @@
   <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <span class="navbar-brand">
-            Module 07
+        <span class="navbar-brand p-2">
+              Module 07
         </span>
         <ul class="navbar-nav">
             <li class="nav-item">

@@ -25,7 +25,7 @@ class AdminController  extends AbstractController{
             $description = htmlspecialchars(trim($_POST["description"]));
             // $image = trim($_POST["image"]);
             $image = filter_input(INPUT_POST , "image", FILTER_SANITIZE_URL );
-            $dt_creation = trim($_POST["dt_creation"]);
+            $date_creation = trim($_POST["date_creation"]);
             $on_sale = intval($_POST["on_sale"]); // Ensure it's an integer
 
             if(strlen($name ) < 3 || strlen($name) > 255){
@@ -49,9 +49,9 @@ class AdminController  extends AbstractController{
                     // $erreur[] = $image;
             }
 
-            if (strtotime($dt_creation) == false) {
+            if (strtotime($date_creation) == false) {
                 // $erreur[] = " the date is not valid ";
-                $erreur[] = $dt_creation;
+                $erreur[] = $date_creation;
 
             }
 
@@ -64,7 +64,7 @@ class AdminController  extends AbstractController{
                          ->setDescription($description)
                          ->setImage($image === "" ? null : $image  )
                          ->setOn_sale($on_sale)
-                         ->setDtCreation($dt_creation);
+                         ->setDtCreation($date_creation);
             if(empty($erreur)){
                 $vehicleModel->create();
                 global $router ;
@@ -159,36 +159,6 @@ class AdminController  extends AbstractController{
         }
     }
 
-    //Receive the Vehicle_ID for further modification from manage_vehicle
-    public function modify_vehicle() :void {
-        $data = [];
-        $VehicleModel =  new User();
-        $id = $_POST['vehicle_id'];
-        $data["vehicle"] = $VehicleModel->readOne($id);
-        $data["h1"] = " Modify Vehicle Data ";
-        $data["title"] = "User Data";
-        $data["vehicle_id"] = $id;
-        $this->render("update_vehicle" , $data);
-
-        global $router ;
-        header("Location:" . $router->generate("manage_vehicle"));
-    }
-
-    //Receive the User_ID for further modification from manage_user
-    public function modify_user() :void {
-        $data = [];
-        $userModel =  new User();
-        $id = $_POST['user_id'];
-        $data["user"] = $userModel->readOne($id);
-        $data["h1"] = " Modify user Data ";
-        $data["title"] = "User Data";
-        $data["user_id"] = $id;
-        $this->render("update_user" , $data);
-
-        global $router ;
-        header("Location:" . $router->generate("manage_user"));
-    }
-
     //Modify Vehicle according to the ID
     public function update_vehicle(){
 
@@ -203,7 +173,7 @@ class AdminController  extends AbstractController{
             $description = htmlspecialchars(trim($_POST["description"]));
             // $image = trim($_POST["image"]);
             $image = filter_input(INPUT_POST , "image", FILTER_SANITIZE_URL );
-            $dt_creation = trim($_POST["dt_creation"]);
+            $date_creation = trim($_POST["date_creation"]);
             $on_sale = intval($_POST["on_sale"]); // Ensure it's an integer
 
             if(strlen($name ) < 3 || strlen($name) > 255){
@@ -227,9 +197,9 @@ class AdminController  extends AbstractController{
                     // $erreur[] = $image;
             }
 
-            if (strtotime($dt_creation) == false) {
+            if (strtotime($date_creation) == false) {
                 // $erreur[] = " the date is not valid ";
-                $erreur[] = $dt_creation;
+                $erreur[] = $date_creation;
 
             }
 
@@ -242,7 +212,7 @@ class AdminController  extends AbstractController{
                          ->setDescription($description)
                          ->setImage($image === "" ? null : $image  )
                          ->setOn_sale($on_sale)
-                         ->setDtCreation($dt_creation);
+                         ->setDtCreation($date_creation);
 
 
             if(empty($erreur)){
@@ -256,7 +226,7 @@ class AdminController  extends AbstractController{
         $data = [];
         $data["erreur"] = $erreur;
         $data["vehicle"] = $vehicleModel ; 
-        $this->render("update_user", $data); 
+        $this->render("update_vehicle", $data); 
     }
 
     public function update_user(){

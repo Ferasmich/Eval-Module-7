@@ -7,8 +7,11 @@
             <?php endforeach ?>
         </div>
     <?php endif ?>
-
-    <?php var_dump($data["user_id"]); ?>
+    
+    <?php
+        foreach($data["user"] as $key => $value)
+        $userEmail = $value->getEmail();
+    ?>
 
     <div class="row">
     <form method="post" class="col-6 offset-3 my-4" action="update">
@@ -18,7 +21,7 @@
         </div>
         <div class="mb-3">
             <label for="email">email </label>
-            <input type="email" id="email" class="form-control" name="email">
+            <input type="email" id="email" class="form-control" name="email" value = "<?= $userEmail ?>">
         </div>
         <div class="mb-3">
             <label for="password">password </label>
