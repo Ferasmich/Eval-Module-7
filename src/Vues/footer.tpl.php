@@ -1,7 +1,7 @@
 &nbsp;
 &nbsp;
   <!-- Footer -->
-  <footer class="text-center text-white" style="background-color: #0a4275;">
+  <footer class="text-center text-white" style="background-color: #0080ff; margin-top: auto;">
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
     <p>&copy; Feras M : <?= date("Y") ?></p>

@@ -1,7 +1,7 @@
 &nbsp;
 <div class="container">
 
-<a href="<?= $router->generate("open_user_page") ?>" class="btn btn-primary float-end"> Create New </a>
+<a href="<?= $router->generate("admin_user_new") ?>" class="btn btn-primary float-end"> Create New </a>
 
     <h1 class="display-4"><?= $data["h1"] ?></h1>
 

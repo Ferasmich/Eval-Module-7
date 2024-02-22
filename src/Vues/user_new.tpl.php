@@ -18,6 +18,8 @@
             <label for="password">password *</label>
             <input type="password" id="password" class="form-control" name="password">
         </div>
+        <!-- Ajouter un input caché avec la valeur "create" -->
+        <input type="hidden" name="type" value="create" id="type">
         <div class="text-end">
             <input type="submit" class="btn btn-success" value="Create">
         </div>

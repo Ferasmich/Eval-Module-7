@@ -56,21 +56,25 @@ $router->map("GET|POST", "/admin/user/manage", [
     "method" => "manage_user"
 ] , "admin_manage_user");
 
+//Open admin_user_new page to create new data
 $router->map("GET|POST" , "/admin/user/new", [
     "class" => "\App\Controller\AdminController",
     "method" => "open_user_page"
 ] , "open_user_page");
 
+//Open admin_vehicle_new page to create new data
 $router->map("GET|POST" , "/admin/vehicle/new", [
     "class" => "\App\Controller\AdminController",
     "method" => "open_vehicle_page"
 ] , "open_vehicle_page");
 
+// Call Update function to delete vehicle data in database
 $router->map("GET|POST" , "/admin/vehicle/delete", [
     "class" => "\App\Controller\AdminController",
     "method" => "delete_vehicle"
 ] , "delete_vehicle");
 
+// Call Update function to delete user data in database
 $router->map("GET|POST" , "/admin/user/delete", [
     "class" => "\App\Controller\AdminController",
     "method" => "delete_user"
@@ -88,11 +92,13 @@ $router->map("GET|POST" , "/admin/user/modify", [
     "method" => "modify_user"
 ] , "modify_user");
 
+// Call Update function to udpate vehicle data in database
 $router->map("GET|POST" , "/admin/vehicle/update", [
     "class" => "\App\Controller\AdminController",
     "method" => "update_vehicle"
 ] , "update_vehicle");
 
+// Call Update function to udpate user data in database
 $router->map("GET|POST" , "/admin/user/update", [
     "class" => "\App\Controller\AdminController",
     "method" => "update_user"

@@ -10,6 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap" rel="stylesheet">
 
     <style>
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures body takes up full viewport height */
+}
+
+main {
+  flex: 1; /* Expands to fill available space */
+}
 
     </style>
 
